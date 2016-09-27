@@ -63,7 +63,7 @@
   // web3.eth.coinbase may be undefined or throw an exception, thus handling both cases here
   try {
     var coinbase = web3.eth.coinbase;
-    if (!web3.eth.coinbase) {
+    if (!coinbase) {
       throw "undefined"
     }
   } catch(e) {
