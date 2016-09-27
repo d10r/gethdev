@@ -60,7 +60,13 @@
   }
 
   // create the first account (with blank password) if necessary
-  if (!web3.eth.coinbase) {
+  // web3.eth.coinbase may be undefined or throw an exception, thus handling both cases here
+  try {
+    var coinbase = web3.eth.coinbase;
+    if (!web3.eth.coinbase) {
+      throw "undefined"
+    }
+  } catch(e) {
     log('Creating etherbase account');
     web3.personal.newAccount('');
   }
